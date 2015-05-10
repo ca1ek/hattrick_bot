@@ -17,3 +17,10 @@ login = f.read().split(" ")
 username.send_keys(login[0])
 password.send_keys(login[1])
 button.click()
+# now on the main page
+my_club = browser.find_element_by_xpath('.//*[@id=\'myClubLink\']')
+my_club.click()
+# now on the my club page
+challenges = browser.find_element_by_partial_link_text('Wyzwania')
+challenges.click()
+# now on the challenges page

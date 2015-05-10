@@ -43,3 +43,4 @@ try:
     browser.quit()
 except:
     browser.quit()
+    pass

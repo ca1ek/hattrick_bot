@@ -37,10 +37,45 @@ try:
         except selenium.common.exceptions.NoSuchElementException:
             print("it works just half the time for some reason, trying again")
     # now on the challenges page
-    add_to_pool = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPSidebar_btnShowPoolSettings\']')
-    add_to_pool.click()
+    try:
+        pool = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPSidebar_btnShowPoolSettings\']')
+        pool.click()
+        # now on challenge settings page
+        button = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPMain_btnPoolSettingsSave\']')
+        button.click()
+    except:
+        print("pool thingy not found, not a problem")
+    # now on challenge settings page
+    #button = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPMain_btnPoolSettingsSave\']')
+    #button.click()
+    # now added to the pool
+    while True:
+        try:
+            matches = browser.find_element_by_xpath('.//*[@id=\'matchesLink\']')
+            matches.click()
+            break
+        except:
+            print("fial")
+    # now on matches page
+    match = browser.find_element_by_xpath(
+        './/*[@id=\'mainBody\']/table/tbody/tr[td[2]/img[contains(@class, \'matchFriendly\')]]/td[7]/a/img')
+    match.click()
+    # now on the match selection stuffs page
+    button = browser.find_element_by_xpath('.//*[@id=\'lineups\']')
+    button.click()
+    # lineups menu is now open
+    button = browser.find_element_by_xpath('.//*[@id=\'ui-id-5\']/span')
+    button.click()
+    # now in saved lineups selection
+    button = browser.find_element_by_xpath('.//*[@id=\'savedlineup_8240059\']')
+    button.click()
+    # saved lineup now select
+    button = browser.find_element_by_xpath('.//*[@id=\'send\']')
+    button.click()
+    # lineup now set
 
-    browser.quit()
+
+    #browser.quit()
 except:
-    browser.quit()
+    #browser.quit()
     pass

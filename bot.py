@@ -1,5 +1,8 @@
+from selenium.selenium import selenium
+
 __author__ = 'ca1ek'
 
+import selenium
 from selenium import webdriver
 
 browser = webdriver.Firefox()
@@ -24,11 +27,13 @@ my_club = browser.find_element_by_xpath('.//*[@id=\'myClubLink\']')
 my_club.click()
 # now on the my club page
 
+
 while True:
     try:
         challenges = browser.find_element_by_partial_link_text('Wyzwania')
         challenges.click()
-    except NoSuchElementException:
+        break
+    except selenium.common.exceptions.NoSuchElementException:
         print("it works just half the time for some reason, trying again")
 # now on the challenges page
 add_to_pool = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPSidebar_btnShowPoolSettings\']')

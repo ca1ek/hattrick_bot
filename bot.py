@@ -7,7 +7,7 @@ from selenium import webdriver
 
 try:
     browser = webdriver.Firefox()
-    browser.get('http://hattrick.org')
+    browser.get('http://hattrick.org/Startpage2.aspx')
     browser.set_window_size(1280, 720)
 
     username = browser.find_element_by_xpath('.//*[@id=\'txtUserName\']')

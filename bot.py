@@ -8,11 +8,14 @@ browser.get('http://hattrick.org')
 username = browser.find_element_by_xpath('.//*[@id=\'txtUserName\']')
 password = browser.find_element_by_xpath('.//*[@id=\'txtPassword\']')
 button = browser.find_element_by_xpath('.//*[@id=\'butLogin\']')
-
-f = open('user.txt', 'r')
+try:
+    f = open('user.txt', 'r')
+except IOError:
+    browser.quit()
+    exit()
 
 login = f.read().split(" ")
-'''
+
 username.send_keys(login[0])
 password.send_keys(login[1])
 button.click()
@@ -32,4 +35,4 @@ add_to_pool = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CP
 add_to_pool.click()
 
 browser.quit()
-'''
+

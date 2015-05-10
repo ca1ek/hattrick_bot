@@ -6,8 +6,14 @@ from selenium import webdriver
 browser = webdriver.Firefox()
 browser.get('http://hattrick.org')
 
-login = browser.find_element_by_xpath('.//*[@id=\'txtUserName\']')
+username = browser.find_element_by_xpath('.//*[@id=\'txtUserName\']')
 password = browser.find_element_by_xpath('.//*[@id=\'txtPassword\']')
+button = browser.find_element_by_xpath('.//*[@id=\'butLogin\']')
 
-login.send_keys("login")
-password.send_keys("password")
+f = open('user.txt', 'r')
+
+login = f.read().split(" ")
+
+username.send_keys(login[0])
+password.send_keys(login[1])
+button.click()

@@ -4,6 +4,8 @@ __author__ = 'ca1ek'
 
 import selenium
 from selenium import webdriver
+from time import sleep
+import random
 
 try:
     browser = webdriver.Firefox()
@@ -43,11 +45,13 @@ try:
         # now on challenge settings page
         button = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPMain_btnPoolSettingsSave\']')
         button.click()
-    except:
+    except selenium.common.exceptions.NoSuchElementException:
         print("pool thingy not found, not a problem")
     # now on challenge settings page
-    #button = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPMain_btnPoolSettingsSave\']')
-    #button.click()
+    # IGNORE
+    #   button = browser.find_element_by_xpath('.//*[@id=\'ctl00_ctl00_CPContent_CPMain_btnPoolSettingsSave\']')
+    #   button.click()
+    # IGNORE
     # now added to the pool
     while True:
         try:
@@ -55,11 +59,18 @@ try:
             matches.click()
             break
         except:
-            print("fial")
+            print("Matches link not found for some reason, retrying")
     # now on matches page
-    match = browser.find_element_by_xpath(
-        './/*[@id=\'mainBody\']/table/tbody/tr[td[2]/img[contains(@class, \'matchFriendly\')]]/td[7]/a/img')
-    match.click()
+    while True:
+        try: # trying to find a match
+            match = browser.find_element_by_xpath(
+                './/*[@id=\'mainBody\']/table/tbody/tr[td[2]/img[contains(@class, \'matchFriendly\')]]/td[7]/a/img')
+            match.click()
+            break
+        except selenium.common.exceptions.NoSuchElementException:
+            print("no match found yet, retrying in about 11-13 mintues")
+            sleep(600 + random.randint(60, 180))
+
     # now on the match selection stuffs page
     button = browser.find_element_by_xpath('.//*[@id=\'lineups\']')
     button.click()
@@ -75,7 +86,7 @@ try:
     # lineup now set
 
 
-    #browser.quit()
+    browser.quit()
 except:
-    #browser.quit()
+    browser.quit()
     pass

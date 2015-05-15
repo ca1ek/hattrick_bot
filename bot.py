@@ -28,7 +28,7 @@ try:
     print("0.55")
     password.send_keys(login[1])
     print("0.6")
-    button.click()
+    button.click() #FAIL
     print("0.7")
     # now on the main page
     print("1")
@@ -95,5 +95,5 @@ try:
 
     browser.quit()
 except:
-    browser.quit()
     pass
+    browser.quit()

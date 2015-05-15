@@ -28,8 +28,11 @@ try:
     password.send_keys(login[1])
     button.click()
     # now on the main page
+    print("1")
     my_club = browser.find_element_by_xpath('.//*[@id=\'myClubLink\']')
+    print("2")
     my_club.click()
+    print("3")
     # now on the my club page
 
     while True:

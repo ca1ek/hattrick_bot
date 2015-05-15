@@ -21,9 +21,9 @@ try:
         print("No username file")
         browser.quit()
         exit()
-
+    print("0")
     login = f.read().split(" ")
-
+    print("0.5")
     username.send_keys(login[0])
     password.send_keys(login[1])
     button.click()

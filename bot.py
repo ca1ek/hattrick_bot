@@ -18,6 +18,7 @@ try:
     try:
         f = open('user.txt', 'r')
     except IOError:
+        print("No username file")
         browser.quit()
         exit()
 

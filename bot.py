@@ -86,7 +86,7 @@ button.click()
 # lineup now set
 
 
-    browser.quit()
+browser.quit()
 #except:
 #   browser.quit()
 #   pass

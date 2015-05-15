@@ -25,8 +25,11 @@ try:
     login = f.read().split(" ")
     print("0.5")
     username.send_keys(login[0])
+    print("0.55")
     password.send_keys(login[1])
+    print("0.6")
     button.click()
+    print("0.7")
     # now on the main page
     print("1")
     my_club = browser.find_element_by_xpath('.//*[@id=\'myClubLink\']')

@@ -8,7 +8,7 @@ from time import sleep
 import random
 
 try:
-    browser = webdriver.Chrome()
+    browser = webdriver.Firefox()
     browser.get('http://hattrick.org/Startpage2.aspx')
     browser.set_window_size(1280, 720)
 

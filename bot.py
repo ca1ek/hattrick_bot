@@ -27,7 +27,7 @@ try:
     print("0.55")
     password.send_keys(login[1])
     print("0.6")
-    button = browser.find_element_by_xpath('.//*[@id=\'butLogin\']')
+    button = browser.find_element_by_id('butLogin')
     button.click() #FAIL
     print("0.7")
     # now on the main page

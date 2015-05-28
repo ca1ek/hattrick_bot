@@ -14,7 +14,6 @@ try:
 
     username = browser.find_element_by_xpath('.//*[@id=\'txtUserName\']')
     password = browser.find_element_by_xpath('.//*[@id=\'txtPassword\']')
-    button = browser.find_element_by_xpath('.//*[@id=\'butLogin\']')
     try:
         f = open('user.txt', 'r')
     except IOError:
@@ -28,6 +27,7 @@ try:
     print("0.55")
     password.send_keys(login[1])
     print("0.6")
+    button = browser.find_element_by_xpath('.//*[@id=\'butLogin\']')
     button.click() #FAIL
     print("0.7")
     # now on the main page
